@@ -1,36 +1,16 @@
-/* Light pastel gradient (peach → pink → lavender) */
 .gradient-bg {
-  background: linear-gradient(135deg, #ffe1c6 0%, #fbc2eb 45%, #a6c1ee 100%);
+  background: linear-gradient(90deg, #2ecc71, #3498db);
 }
 
-/* Hero spacing */
 .hero {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+  background: linear-gradient(90deg, rgba(46,204,113,0.9), rgba(52,152,219,0.9)),
+    url('https://picsum.photos/1600/900?blur');
+  background-size: cover;
+  background-position: center;
+  color: white;
 }
 
-/* Cards: gentle hover and soft corners */
-.card {
-  border: 0;
-  border-radius: 1rem;
-  box-shadow: 0 4px 18px rgba(20, 20, 20, 0.06);
-}
-.card:hover {
-  transform: translateY(-2px);
-  transition: transform 0.2s ease;
-}
-
-/* How-it-works cards subtle accent on hover */
-.hiw-card:hover {
-  box-shadow: 0 6px 28px rgba(20, 20, 20, 0.08);
-}
-
-/* Feature cards */
-.feature-card {
-  background: #ffffff;
-}
-
-/* Overlay spinner (full-screen) */
+/* Overlay spinner */
 .overlay {
   position: fixed;
   inset: 0;
@@ -48,31 +28,23 @@
   box-shadow: 0 10px 40px rgba(0,0,0,0.08);
 }
 
-/* Simple entrance animations */
+/* Fade-in animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-in-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 .fade-in-up {
   opacity: 0;
-  transform: translateY(10px);
-  animation: fadeUp 500ms ease forwards;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
 }
-.fade-in-up.delay-1 { animation-delay: 120ms; }
-.fade-in-up.delay-2 { animation-delay: 220ms; }
-
+.fade-in-up.delay-1 { animation-delay: 0.3s; }
+.fade-in-up.delay-2 { animation-delay: 0.6s; }
 @keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes pop {
-  from { transform: scale(.98); opacity: .6; }
-  to   { transform: scale(1);   opacity: 1; }
-}
-
-/* Typography polish */
-body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  color: #1f2633;
-}
-.lead { color: #49566d; }
-
-/* Little utility for large paddings on md+ */
-@media (min-width: 768px) {
-  .py-md-6 { padding-top: 5rem !important; padding-bottom: 5rem !important; }
+  to { opacity:1; transform: translateY(0);}
 }

@@ -3,28 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MiniprojectReport</title>
+  <title>ReportGen — Mini Project Reports</title>
 
   <!-- Bootstrap -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <!-- Bootstrap Icons (for cute icons in features) -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
   <link rel="stylesheet" href="../static/css/generate.css" />
 </head>
 <body>
+  <!-- Spinner Overlay -->
 
-  <!-- Spinner Overlay (hidden by default) -->
   <div id="overlay" class="overlay d-none" aria-hidden="true">
     <div class="overlay-content text-center">
       <div class="spinner-border" role="status" aria-label="Generating"></div>
       <p class="mt-3 mb-0 fw-semibold">Generating your Report…</p>
-      <small class="text-muted">It will take around 1-2 minutes.</small>
+      <small class="text-muted">It will take only 1-2 mins</small>
     </div>
   </div>
 
@@ -32,15 +26,13 @@
   <nav class="navbar navbar-expand-md navbar-dark gradient-bg shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">Terna Mnp Report Generator</a>
-
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div id="nav" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#how-it-works">How it works</a></li>
-          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#generate">Generate</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
           <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
         </ul>
       </div>
@@ -50,152 +42,102 @@
   <!-- Hero -->
   <header class="hero gradient-bg">
     <div class="container text-center py-5 py-md-6">
-      <h1 class="display-5 fw-bold text-dark fade-in-up">From prompt to Mnp Report in 2 mins 🚀</h1>
-      <p class="lead text-secondary mt-2 fade-in-up delay-1">
-        Paste your Topic, get a polished report with flowchart and literature survey table.
+      <h1 class="display-5 fw-bold text-white fade-in-up">Mnp Report Generator<br>(Only for Terna Students)</h1>
+      <p class="lead text-white mt-2 fade-in-up delay-1">
+        Enter your topic and get a structured, ready-to-submit report in 2 minutes.
       </p>
 
       <!-- Prompt Form -->
-      <form id="pptForm" class="mt-4 fade-in-up delay-2" method="POST" action="/">
+      <form id="reportForm" class="mt-4 fade-in-up delay-2" method="POST" action="/">
         <div class="row g-2 justify-content-center">
           <div class="col-12 col-md-7">
-            <input
-              type="text"
+            <input type="text" id="topicInput" name="prompt"
               class="form-control form-control-lg"
-              id="promptInput"
-              name="prompt"
-              placeholder="Enter your MiniProject Topic"
-              required
-            />
+              placeholder="For eg. Hospital Management System"
+              required />
           </div>
           <div class="col-12 col-md-3 d-grid">
             <button id="generateBtn" type="submit" class="btn btn-lg btn-primary">
-              <i class="bi bi-magic"></i> Generate Report
+              <i class="bi bi-file-earmark-text"></i> Generate
             </button>
           </div>
         </div>
         <div class="text-start small text-muted mt-2">
-          Tip: Prompt can be as small as a sentence or as big as a paragraph 
+          Tip: The prompt can be as small as a Sentence or as big as a Paragraph.
         </div>
       </form>
-
-      
     </div>
   </header>
 
   <!-- How it works -->
-  <section id="how-it-works" class="py-5">
+  <section id="how" class="py-5">
     <div class="container">
       <h2 class="text-center fw-bold mb-4">How it works</h2>
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="hiw-card card h-100 p-3 text-center">
-            <i class="bi bi-chat-dots fs-1 mb-2"></i>
-            <h5 class="fw-semibold">1. Prompt</h5>
-            <p class="mb-0">You enter a topic/idea. We structure it with your chosen LLM.</p>
+          <div class="card h-100 p-3 text-center fade-in">
+            <i class="bi bi-pencil-square fs-1 mb-2"></i>
+            <h5 class="fw-semibold">1. Enter Topic</h5>
+            <p class="mb-0">Type your project topic in the input box above.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="hiw-card card h-100 p-3 text-center">
-            <i class="bi bi-diagram-3 fs-1 mb-2"></i>
-            <h5 class="fw-semibold">2. Build</h5>
-            <p class="mb-0">We fill a PPT template, pull images from Unsplash, and format slides.</p>
+          <div class="card h-100 p-3 text-center fade-in">
+            <i class="bi bi-cpu fs-1 mb-2"></i>
+            <h5 class="fw-semibold">2. Generate</h5>
+            <p class="mb-0">Our backend structures and writes the full report.</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="hiw-card card h-100 p-3 text-center">
+          <div class="card h-100 p-3 text-center fade-in">
             <i class="bi bi-download fs-1 mb-2"></i>
             <h5 class="fw-semibold">3. Download</h5>
-            <p class="mb-0">Your PPT downloads instantly once the backend finishes.</p>
+            <p class="mb-0">Your ready report is available to download as a DOCX.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section id="features" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="text-center fw-bold mb-4">Why you’ll love it</h2>
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card card h-100 p-3">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <i class="bi bi-stars fs-4"></i>
-              <h6 class="mb-0 fw-semibold">Clean UI</h6>
-            </div>
-            <p class="mb-0">Minimal, responsive, and fast. Works beautifully on mobile.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card card h-100 p-3">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <i class="bi bi-images fs-4"></i>
-              <h6 class="mb-0 fw-semibold">Smart images</h6>
-            </div>
-            <p class="mb-0">Pulls high-quality visuals using the Unsplash API based on your topic.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card card h-100 p-3">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <i class="bi bi-braces fs-4"></i>
-              <h6 class="mb-0 fw-semibold">Structured output</h6>
-            </div>
-            <p class="mb-0">Pydantic-validated sections for consistent, slide-ready content.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="feature-card card h-100 p-3">
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <i class="bi bi-rocket-takeoff fs-4"></i>
-              <h6 class="mb-0 fw-semibold">Hackathon-ready</h6>
-            </div>
-            <p class="mb-0">Optimized for quick iteration and rapid downloads during demos.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- FAQ -->
-  <section id="faq" class="py-5">
+  <section id="faq" class="py-5 bg-light">
     <div class="container">
       <h2 class="text-center fw-bold mb-4">FAQ</h2>
       <div class="accordion" id="faqAcc">
         <div class="accordion-item">
           <h2 class="accordion-header" id="q1">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
-              How many ppt can I generate?
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#a1">
+              How do I get my report?
             </button>
           </h2>
           <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc">
-            <div class="accordion-body bg-light">
-              You can generate as many as you want for free.
+            <div class="accordion-body">
+              When you click <b>Generate</b>, in 1-2 mins your report is generated then a download docx button appears,just click on it to download.
             </div>
           </div>
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header" id="q2">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
-              How does it work?
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#a2">
+              Can I edit the report later?
             </button>
           </h2>
           <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
-            <div class="accordion-body bg-light">
-              The prompt is fed into an LLM and it returns a structured output which is then placed in a predefined template.
+            <div class="accordion-body">
+              Yes. The generated file is a Word document, so you can edit it easily.
             </div>
           </div>
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header" id="q3">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">
-              Is there only one template?
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#a3">
+              How many Reports can I generate?
             </button>
           </h2>
           <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
-            <div class="accordion-body bg-light">
-              Yes, for now we have only one template, we will be adding more pretty soon.
+            <div class="accordion-body">
+              There is no limit, you can generate as many as you want.
             </div>
           </div>
         </div>
@@ -203,10 +145,11 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="py-4 border-top bg-white">
     <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-      <span class="small text-muted">© <span id="year"></span> PPTthon</span>
-      <span class="small text-muted">Built for fast demos & hackathons</span>
+      <span class="small text-muted">© <span id="year"></span> ReportGen</span>
+      <span class="small text-muted">Built for college mini-projects</span>
     </div>
   </footer>
 
