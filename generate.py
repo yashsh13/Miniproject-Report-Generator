@@ -2,8 +2,8 @@ import os
 from typing import List, Optional
 from pydantic import BaseModel, Field
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.prompts import PromptTemplate
-from langchain.output_parsers import PydanticOutputParser
+from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import PydanticOutputParser
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -65,7 +65,7 @@ prompt = PromptTemplate(
             partial_variables={"format_instructions": parser.get_format_instructions()}
         )
 
-model = ChatGoogleGenerativeAI(model='gemma-3-27b-it', temperature=0.7)
+model = ChatGoogleGenerativeAI(model='gemini-3.8-flash', temperature=0.7)
 
 chain = prompt | model | parser
 
