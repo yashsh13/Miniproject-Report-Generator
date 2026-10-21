@@ -65,7 +65,7 @@ prompt = PromptTemplate(
             partial_variables={"format_instructions": parser.get_format_instructions()}
         )
 
-model = ChatGoogleGenerativeAI(model='gemini-3.8-flash', temperature=0.7)
+model = ChatGoogleGenerativeAI(model='gemini-3.5-flash-lite', temperature=0.7)
 
 chain = prompt | model | parser
 
